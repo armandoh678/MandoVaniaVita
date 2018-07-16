@@ -1,15 +1,16 @@
 TARGET		:= mandovania
 TITLE		:= MANDV0001
 GIT_VERSION := $(shell git describe --abbrev=6 --dirty --always --tags)
-
+PSVITAIP 	:=192.168.0.19
 LIBS = -lvita2d -lSceDisplay_stub -lSceGxm_stub \
 	-lSceSysmodule_stub -lSceCtrl_stub -lScePgf_stub -lScePvf_stub \
 	-lSceCommonDialog_stub -lfreetype -lpng -ljpeg -lz -lm -lc
-
-CPPSOURCES	:= .
+INC=-I/castleengine/
+CPPSOURCES	:= ./
 
 CFILES	:=
-CPPFILES   := $(foreach dir,$(CPPSOURCES), $(wildcard $(dir)/*.cpp))
+#CPPFILES   := $(foreach dir,$(CPPSOURCES), $(wildcard $(dir)/*.cpp))
+CPPFILES	:=  $(wildcard castleengine/*.cpp) $(wildcard castleengine/render/*.cpp) $(wildcard castleengine/chars/*.cpp) $(wildcard *.cpp)
 BINFILES := $(foreach dir,$(DATA), $(wildcard $(dir)/*.bin))
 OBJS     := $(addsuffix .o,$(BINFILES)) $(CFILES:.c=.o) $(CPPFILES:.cpp=.o)
 
@@ -17,7 +18,7 @@ PREFIX  = arm-vita-eabi
 CC      = $(PREFIX)-gcc
 CXX      = $(PREFIX)-g++
 CFLAGS  = -Wl,-q -O2 -g -mtune=cortex-a9 -mfpu=neon
-CXXFLAGS  = $(CFLAGS) -fno-exceptions -std=gnu++11
+CXXFLAGS  = $(INC) $(CFLAGS) -fno-exceptions -std=gnu++11
 ASFLAGS = $(CFLAGS)
 
 all: $(TARGET).vpk
@@ -41,3 +42,8 @@ $(TARGET).elf: $(OBJS)
 
 clean:
 	@rm -rf $(TARGET).velf $(TARGET).elf $(OBJS) $(TARGET).elf.unstripped.elf $(TARGET).vpk build/eboot.bin build/sce_sys/param.sfo ./param.sfo
+
+
+send:
+	curl -T build/eboot.bin ftp://$(PSVITAIP):1337/ux0:/app/$(TITLE)/
+	@echo "Sent."

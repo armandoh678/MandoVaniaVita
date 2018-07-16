@@ -1,5 +1,5 @@
 #include "objeto.h"
-
+#include "motor.h"
 Objeto::Objeto()
 {
 }
@@ -7,17 +7,17 @@ Objeto::Objeto()
 Objeto::~Objeto()
 {
 }
-void Objeto::setNombre(std::string nombre)
+void Objeto::setNombre(const char* nombre)
 {
     m_nombre=nombre;
 }
 
-std::string Objeto::getNombre()
+const char* Objeto::getNombre()
 {
     return m_nombre;
 }
 
-std::string Objeto::toString()
+const char* Objeto::toString()
 {
     return m_nombre;
 }

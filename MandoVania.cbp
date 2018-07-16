@@ -16,6 +16,8 @@
 					<Add option="-O2" />
 					<Add directory="C:/msys64/usr/local/vitasdk/arm-vita-eabi/include" />
 					<Add directory="castleengine" />
+					<Add directory="castleengine/render" />
+					<Add directory="castleengine/chars" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="C:/msys64/usr/local/vitasdk/arm-vita-eabi/include" />
@@ -33,10 +35,25 @@
 			<Add directory="C:/msys64/usr/local/vitasdk/arm-vita-eabi/include" />
 		</ResourceCompiler>
 		<Unit filename="Makefile" />
+		<Unit filename="castleengine/chars/player.cpp" />
+		<Unit filename="castleengine/chars/player.h" />
+		<Unit filename="castleengine/debug.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="castleengine/escene.cpp" />
+		<Unit filename="castleengine/escene.h" />
 		<Unit filename="castleengine/motor.cpp" />
 		<Unit filename="castleengine/motor.h" />
+		<Unit filename="castleengine/node2d.cpp" />
+		<Unit filename="castleengine/node2d.h" />
 		<Unit filename="castleengine/objeto.cpp" />
 		<Unit filename="castleengine/objeto.h" />
+		<Unit filename="castleengine/render/drawable.cpp" />
+		<Unit filename="castleengine/render/drawable.h" />
+		<Unit filename="castleengine/render/render.cpp" />
+		<Unit filename="castleengine/render/render.h" />
+		<Unit filename="castleengine/render/renderlayer.cpp" />
+		<Unit filename="castleengine/render/renderlayer.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
