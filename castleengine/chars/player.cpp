@@ -16,18 +16,18 @@ void Player::onInit()
 
 void Player::onUpdate()
 {
-    float velx=0;
-    float vely=0;
+    b2Vec2 vel(0.0f,0.0f);
     if(Motor::I().Control_PAD().Just_Pressed_Left()){
-        velx=-5;
+        vel.x=-500;
     }else if(Motor::I().Control_PAD().Just_Pressed_Right()){
-        velx=5;
+        vel.x=500;
     }
     if(Motor::I().Control_PAD().Just_Pressed_Up()){
-        vely=-5;
+        vel.y=-500;
     }else if(Motor::I().Control_PAD().Just_Pressed_Down()){
-        vely=5;
+        vel.y=500;
     }
+    m_body->SetLinearVelocity(vel);
 
 }
 

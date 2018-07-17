@@ -33,7 +33,7 @@ public:
 
     void initAsStatic(b2Vec2 pos, b2Vec2 sz,b2World* wrd);
     void initAsDynamic(b2Vec2 pos, b2Vec2 sz,b2World* wrd,float32 dens =1.0f,float32 fricc =0.3f,float32 rest =0.3f);
-    void initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd);
+    void initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd,float32 dens =1.0f,float32 fricc =0.3f,float32 rest =0.3f);
 
 
 protected:

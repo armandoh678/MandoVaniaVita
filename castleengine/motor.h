@@ -74,6 +74,7 @@ public:
     double &DeltaTime();
     ///--------------///
     void PrintStr(std::string str);
+
 private:
     /// Simgleton   ///
     Motor(Motor const&)               = delete;

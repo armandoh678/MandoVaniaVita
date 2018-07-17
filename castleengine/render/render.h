@@ -22,6 +22,7 @@ public:
     void close();
     void draw(std::vector<RenderLayer*> &m_layers);
     std::string FrameDebDraw;
+    void RenderText(int x,int y,unsigned int col, float scale,std::string text);
 protected:
     vita2d_pgf *pgf;
     vita2d_pvf *pvf;

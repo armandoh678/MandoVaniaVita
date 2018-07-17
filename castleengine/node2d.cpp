@@ -142,8 +142,28 @@ void Node2D::initAsDynamic(b2Vec2 pos, b2Vec2 sz,b2World* wrd,
 
 }
 
-void Node2D::initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd)
+void Node2D::initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd,
+                           float32 dens,float32 fricc ,float32 rest)
 {
+    m_world = wrd;
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_kinematicBody;
+    bodyDef.position.Set(pos.x,pos.y);
+    m_body = m_world->CreateBody(&bodyDef);
+    b2PolygonShape dynamicBox;
+    dynamicBox.SetAsBox(sz.x,sz.y);
 
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = dens;
+    fixtureDef.friction = fricc;
+    fixtureDef.restitution = rest;
+
+    m_body->CreateFixture(&fixtureDef);
+
+    m_drawSize.x =sz.x;
+    m_drawSize.y = sz.y;
+    m_drawSize2.x =sz.x/2.0f;
+    m_drawSize2.y = sz.y/2.0f;
 }
 
