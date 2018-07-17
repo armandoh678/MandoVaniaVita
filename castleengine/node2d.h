@@ -29,12 +29,19 @@ public:
 
     bool getEnable();
     void setEnable(bool en);
-    void initShape(float32 x,float32 y,float32 h,float32 w,b2World* w);
+
+
+    void initAsStatic(b2Vec2 pos, b2Vec2 sz,b2World* wrd);
+    void initAsDynamic(b2Vec2 pos, b2Vec2 sz,b2World* wrd,float32 dens =1.0f,float32 fricc =0.3f,float32 rest =0.3f);
+    void initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd);
+
+
 protected:
-    b2PolygonShape box;
-    b2Body* body;
+    b2Body* m_body;
+    b2Vec2 m_drawSize;
+    b2Vec2 m_drawSize2;
+    b2World *m_world;
     int m_enable;
-    Rectangle2D m_rect;
     std::vector<Node2D*> m_vchilds;
     Node2D* m_parent;
 };

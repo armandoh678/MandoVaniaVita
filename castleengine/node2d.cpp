@@ -1,7 +1,7 @@
 #include "node2d.h"
 #include "motor.h"
 
-Node2D::Node2D(float32 x,float32 y,float32 h,float32 w,b2World* w)
+Node2D::Node2D()
 {
     m_parent = nullptr;
     m_enable = false;
@@ -100,21 +100,50 @@ void Node2D::setEnable(bool en)
     m_enable=en;
 }
 
-Rectangle2D Node2D::SetRectangle(Rectangle2D rect)
+void Node2D::initAsStatic(b2Vec2 pos, b2Vec2 sz,b2World* wrd)
 {
-    m_rect=rect;
+    m_world = wrd;
+    b2BodyDef bodydef;
+    bodydef.position.Set(pos.x,pos.y);
+    bodydef.type = b2_staticBody;
+    b2PolygonShape box;
+    box.SetAsBox(sz.x,sz.y);
+    m_body = m_world->CreateBody(&bodydef);
+    m_body->CreateFixture(&box,0.0f);
+    m_drawSize.x =sz.x;
+    m_drawSize.y = sz.y;
+    m_drawSize2.x =sz.x/2.0f;
+    m_drawSize2.y = sz.y/2.0f;
 }
 
-Rectangle2D &Node2D::GetRectangle()
+void Node2D::initAsDynamic(b2Vec2 pos, b2Vec2 sz,b2World* wrd,
+                           float32 dens,float32 fricc ,float32 rest)
 {
-    return m_rect;
+    m_world = wrd;
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position.Set(pos.x,pos.y);
+    m_body = m_world->CreateBody(&bodyDef);
+    b2PolygonShape dynamicBox;
+    dynamicBox.SetAsBox(sz.x,sz.y);
+
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = dens;
+    fixtureDef.friction = fricc;
+    fixtureDef.restitution = rest;
+
+    m_body->CreateFixture(&fixtureDef);
+
+    m_drawSize.x =sz.x;
+    m_drawSize.y = sz.y;
+    m_drawSize2.x =sz.x/2.0f;
+    m_drawSize2.y = sz.y/2.0f;
+
 }
 
-void Node2D::initShape(float32 x,float32 y,float32 h,float32 w,b2World* w)
+void Node2D::initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd)
 {
-    b2BodyDef bodDef;
-    bodDef.position.Set(x, y);
-    box.SetAsBox(h,w);
-    body = w->CreateBody(&bodDef);
-    body->CreateFixture(&box,0.0f);
+
 }
+

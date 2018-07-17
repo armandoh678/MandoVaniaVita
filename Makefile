@@ -4,7 +4,7 @@ GIT_VERSION := $(shell git describe --abbrev=6 --dirty --always --tags)
 PSVITAIP 	:=192.168.0.19
 LIBS = -lvita2d -lSceDisplay_stub -lSceGxm_stub \
 	-lSceSysmodule_stub -lSceCtrl_stub -lScePgf_stub -lScePvf_stub \
-	-lSceCommonDialog_stub -lfreetype -lpng -ljpeg -lz -lm -lc
+	-lSceCommonDialog_stub -lfreetype -lpng -ljpeg -lz -lm -lc  -lbox2d
 INC=-I/castleengine/
 CPPSOURCES	:= ./
 

@@ -14,10 +14,11 @@ public:
     Escene();
     virtual ~Escene();
     virtual void onInit();
+    virtual void onUpdate();
 protected:
     Player *pl;
     std::vector<RenderLayer*> m_RLayers;
-    b2World *world;
+    b2World *m_world;
 };
 
 #endif // ESCENE_H

@@ -51,6 +51,8 @@
 		<Unit filename="castleengine/node2d.h" />
 		<Unit filename="castleengine/objeto.cpp" />
 		<Unit filename="castleengine/objeto.h" />
+		<Unit filename="castleengine/render/color.cpp" />
+		<Unit filename="castleengine/render/color.h" />
 		<Unit filename="castleengine/render/drawable.cpp" />
 		<Unit filename="castleengine/render/drawable.h" />
 		<Unit filename="castleengine/render/render.cpp" />
