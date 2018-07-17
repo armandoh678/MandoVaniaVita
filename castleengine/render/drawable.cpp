@@ -55,10 +55,6 @@ void Drawable2D::setColor(DrawColor color){
 }
 void Drawable2D::Draw()
 {
-    vita2d_draw_rectangle(m_rect.GetPos().GetX(), m_rect.GetPos().GetY(),
-                          m_rect.GetSiz().GetX(),m_rect.GetSiz().GetY(),
-                          RGBA8(m_color.getR(), m_color.getG(), m_color.getB(), m_color.getA()));
-
 }
 
 Sprite::Sprite()

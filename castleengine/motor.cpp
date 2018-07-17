@@ -110,12 +110,8 @@ bool Control::Just_Pressed_Select()
 
 Motor::Motor()
 {
-    d_delta = 0;
-    clock_t deltaTime = 0;
-    frames = 0;
-    frameRate = 30;
-    averageFrameTimeMilliseconds = 33.333;
-
+     m_deltaTimeD = 0;
+     m_fps=60;
 }
 
 Motor::~Motor()
@@ -147,7 +143,8 @@ int Motor::update()
         clock_t beginFrame = clock();
         /////
         m_render.FrameDebDraw=std::string("Debug:\n");
-        m_render.FrameDebDraw+=std::string("Frame Rate: ")+std::to_string(Motor::I().Framerate()).c_str()+std::string("\n");
+        m_render.FrameDebDraw+=std::string("Frame Rate: ")+std::to_string(Framerate()).c_str()+std::string("\n");
+        m_render.FrameDebDraw+=std::string("Delta Time: ")+std::to_string(DeltaTime()).c_str()+std::string("\n");
         sceCtrlPeekBufferPositive(0, &pad, 1);
 
         {
@@ -191,18 +188,11 @@ int Motor::update()
         /////
         clock_t endFrame = clock();
 
-        deltaTime += endFrame - beginFrame;
-        frames ++;
+        m_deltaTime = endFrame - beginFrame;
 
         //if you really want FPS
-        d_delta= clockToMilliseconds(deltaTime);
-        if( d_delta>1.0)  //every second
-        {
-            frameRate = (double)frames*0.5 +  frameRate*0.5; //more stable
-            frames = 0;
-            deltaTime -= CLOCKS_PER_SEC;
-            averageFrameTimeMilliseconds  = 1000.0/(frameRate==0?0.001:frameRate);
-        }
+        m_deltaTimeD= clockToMilliseconds(m_deltaTime);
+        m_fps = (60.0d*m_deltaTimeD)/m_deltaTimeD;
 
         /////
 
@@ -224,14 +214,17 @@ Render &Motor::Renderer()
 }
 double &Motor::Framerate()
 {
-    return frameRate;
+    return m_fps;
 }
 double &Motor::DeltaTime()
 {
-    return d_delta;
+    return m_deltaTimeD;
 }
 
 Control &Motor::Control_PAD()
 {
     return m_gpad;
+}
+void Motor::PrintStr(std::string str){
+    m_render.FrameDebDraw+=str;
 }

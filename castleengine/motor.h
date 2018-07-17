@@ -73,6 +73,7 @@ public:
     double &Framerate();
     double &DeltaTime();
     ///--------------///
+    void PrintStr(std::string str);
 private:
     /// Simgleton   ///
     Motor(Motor const&)               = delete;
@@ -87,12 +88,11 @@ private:
     Escene m_escena;
 
     /*Para Calcular Los FPS*/
-    clock_t deltaTime;
-    unsigned int frames;
-    double  frameRate ;
-    double  averageFrameTimeMilliseconds;
+    clock_t m_deltaTime;
+    double m_deltaTimeD;
     double clockToMilliseconds(clock_t ticks);
-    double d_delta;
+    double m_fps;
+
 
 };
 

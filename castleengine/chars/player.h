@@ -9,6 +9,7 @@ public:
     virtual ~Player();
     virtual void onInit();
     virtual void onUpdate();
+    virtual void onCollide(std::vector<Node2D*> &nodes);
 protected:
 
 };

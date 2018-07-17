@@ -10,7 +10,7 @@ CPPSOURCES	:= ./
 
 CFILES	:=
 #CPPFILES   := $(foreach dir,$(CPPSOURCES), $(wildcard $(dir)/*.cpp))
-CPPFILES	:=  $(wildcard castleengine/*.cpp) $(wildcard castleengine/render/*.cpp) $(wildcard castleengine/chars/*.cpp) $(wildcard *.cpp)
+CPPFILES	:=  $(wildcard castleengine/*.cpp) $(wildcard castleengine/render/*.cpp) $(wildcard castleengine/chars/*.cpp) $(wildcard castleengine/coll/*.cpp) $(wildcard *.cpp)
 BINFILES := $(foreach dir,$(DATA), $(wildcard $(dir)/*.bin))
 OBJS     := $(addsuffix .o,$(BINFILES)) $(CFILES:.c=.o) $(CPPFILES:.cpp=.o)
 
