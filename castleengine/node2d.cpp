@@ -110,19 +110,21 @@ void Node2D::initAsStatic(b2Vec2 pos, b2Vec2 sz,b2World* wrd)
     box.SetAsBox(sz.x,sz.y);
     m_body = m_world->CreateBody(&bodydef);
     m_body->CreateFixture(&box,0.0f);
-    m_drawSize.x =sz.x;
-    m_drawSize.y = sz.y;
-    m_drawSize2.x =sz.x/2.0f;
-    m_drawSize2.y = sz.y/2.0f;
+
+    m_drawSize.x =sz.x*2.f;
+    m_drawSize.y = sz.y*2.f;
+    m_drawSize2.x =sz.x;
+    m_drawSize2.y = sz.y;
 }
 
 void Node2D::initAsDynamic(b2Vec2 pos, b2Vec2 sz,b2World* wrd,
-                           float32 dens,float32 fricc ,float32 rest)
+                           float32 dens,float32 fricc,float32 rest,bool fixRot)
 {
     m_world = wrd;
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(pos.x,pos.y);
+    bodyDef.fixedRotation=fixRot;
     m_body = m_world->CreateBody(&bodyDef);
     b2PolygonShape dynamicBox;
     dynamicBox.SetAsBox(sz.x,sz.y);
@@ -135,20 +137,21 @@ void Node2D::initAsDynamic(b2Vec2 pos, b2Vec2 sz,b2World* wrd,
 
     m_body->CreateFixture(&fixtureDef);
 
-    m_drawSize.x =sz.x;
-    m_drawSize.y = sz.y;
-    m_drawSize2.x =sz.x/2.0f;
-    m_drawSize2.y = sz.y/2.0f;
+    m_drawSize.x =sz.x*2.f;
+    m_drawSize.y = sz.y*2.f;
+    m_drawSize2.x =sz.x;
+    m_drawSize2.y = sz.y;
 
 }
 
 void Node2D::initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd,
-                           float32 dens,float32 fricc ,float32 rest)
+                            float32 dens,float32 fricc,float32 rest,bool fixRot)
 {
     m_world = wrd;
     b2BodyDef bodyDef;
     bodyDef.type = b2_kinematicBody;
     bodyDef.position.Set(pos.x,pos.y);
+    bodyDef.fixedRotation=fixRot;
     m_body = m_world->CreateBody(&bodyDef);
     b2PolygonShape dynamicBox;
     dynamicBox.SetAsBox(sz.x,sz.y);
@@ -161,9 +164,9 @@ void Node2D::initAsKinematc(b2Vec2 pos, b2Vec2 sz,b2World* wrd,
 
     m_body->CreateFixture(&fixtureDef);
 
-    m_drawSize.x =sz.x;
-    m_drawSize.y = sz.y;
-    m_drawSize2.x =sz.x/2.0f;
-    m_drawSize2.y = sz.y/2.0f;
+    m_drawSize.x =sz.x*2.f;
+    m_drawSize.y = sz.y*2.f;
+    m_drawSize2.x =sz.x;
+    m_drawSize2.y = sz.y;
 }
 

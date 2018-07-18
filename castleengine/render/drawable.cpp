@@ -12,7 +12,7 @@ Drawable2D::~Drawable2D()
 
 void Drawable2D::setVisible(bool v)
 {
-    m_visible=true;
+    m_visible=v;
 }
 
 bool &Drawable2D::isVisible(){
@@ -27,5 +27,13 @@ void Drawable2D::Draw()
 {
     vita2d_draw_rectangle(m_body->GetPosition().x-m_drawSize2.x, m_body->GetPosition().y-m_drawSize2.y,
                            m_drawSize.x,m_drawSize.y,
-                           m_color._color);
+                           RGBA8(0,255,0,125));
 }
+
+
+
+
+
+
+
+

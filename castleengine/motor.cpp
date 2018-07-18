@@ -13,7 +13,7 @@ bool Control::Pressed_Left()
 }
 bool Control::Just_Pressed_Left()
 {
-    return m_buttons[0] && m_ant_buttons[0];
+    return m_buttons[0] && !m_ant_buttons[0];
 }
 bool Control::Pressed_Right()
 {
@@ -21,7 +21,7 @@ bool Control::Pressed_Right()
 }
 bool Control::Just_Pressed_Right()
 {
-    return m_buttons[1] && m_ant_buttons[1];
+    return m_buttons[1] && !m_ant_buttons[1];
 }
 bool Control::Pressed_Up()
 {
@@ -29,7 +29,7 @@ bool Control::Pressed_Up()
 }
 bool Control::Just_Pressed_Up()
 {
-    return m_buttons[2] && m_ant_buttons[2];
+    return m_buttons[2] && !m_ant_buttons[2];
 }
 bool Control::Pressed_Down()
 {
@@ -37,7 +37,7 @@ bool Control::Pressed_Down()
 }
 bool Control::Just_Pressed_Down()
 {
-    return m_buttons[3] && m_ant_buttons[3];
+    return m_buttons[3] && !m_ant_buttons[3];
 }
 
 bool Control::Pressed_Cross()
@@ -46,7 +46,7 @@ bool Control::Pressed_Cross()
 }
 bool Control::Just_Pressed_Cross()
 {
-    return m_buttons[4] && m_ant_buttons[4];
+    return m_buttons[4] && !m_ant_buttons[4];
 }
 bool Control::Pressed_Triangle()
 {
@@ -54,7 +54,7 @@ bool Control::Pressed_Triangle()
 }
 bool Control::Just_Pressed_Triangle()
 {
-    return m_buttons[5] && m_ant_buttons[5];
+    return m_buttons[5] && !m_ant_buttons[5];
 }
 bool Control::Pressed_Square()
 {
@@ -62,7 +62,7 @@ bool Control::Pressed_Square()
 }
 bool Control::Just_Pressed_Square()
 {
-    return m_buttons[6] && m_ant_buttons[6];
+    return m_buttons[6] && !m_ant_buttons[6];
 }
 bool Control::Pressed_Circle()
 {
@@ -70,7 +70,7 @@ bool Control::Pressed_Circle()
 }
 bool Control::Just_Pressed_Circle()
 {
-    return m_buttons[7] && m_ant_buttons[7];
+    return m_buttons[7] && !m_ant_buttons[7];
 }
 
 bool Control::Pressed_L()
@@ -79,7 +79,7 @@ bool Control::Pressed_L()
 }
 bool Control::Just_Pressed_L()
 {
-    return m_buttons[8] && m_ant_buttons[8];
+    return m_buttons[8] && !m_ant_buttons[8];
 }
 bool Control::Pressed_R()
 {
@@ -87,7 +87,7 @@ bool Control::Pressed_R()
 }
 bool Control::Just_Pressed_R()
 {
-    return m_buttons[9] && m_ant_buttons[9];
+    return m_buttons[9] && !m_ant_buttons[9];
 }
 
 bool Control::Pressed_Start()
@@ -96,7 +96,7 @@ bool Control::Pressed_Start()
 }
 bool Control::Just_Pressed_Start()
 {
-    return m_buttons[10] && m_ant_buttons[10];
+    return m_buttons[10] && !m_ant_buttons[10];
 }
 bool Control::Pressed_Select()
 {
@@ -104,7 +104,7 @@ bool Control::Pressed_Select()
 }
 bool Control::Just_Pressed_Select()
 {
-    return m_buttons[11] && m_ant_buttons[11];
+    return m_buttons[11] && !m_ant_buttons[11];
 }
 
 

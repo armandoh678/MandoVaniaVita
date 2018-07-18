@@ -2,34 +2,53 @@
 #include "../motor.h"
 Player::Player() :Drawable2D()
 {
+    m_jumpTime =0;
 }
 
 Player::~Player()
 {
-    //dtor
+
 }
 
 void Player::onInit()
 {
     m_enable=true;
+
 }
 
 void Player::onUpdate()
-{
+{/*
     b2Vec2 vel(0.0f,0.0f);
-    if(Motor::I().Control_PAD().Just_Pressed_Left()){
-        vel.x=-500;
-    }else if(Motor::I().Control_PAD().Just_Pressed_Right()){
-        vel.x=500;
+    if(Motor::I().Control_PAD().Pressed_Left())
+    {
+        vel.x=-50000.0f;
     }
-    if(Motor::I().Control_PAD().Just_Pressed_Up()){
-        vel.y=-500;
-    }else if(Motor::I().Control_PAD().Just_Pressed_Down()){
-        vel.y=500;
+    else if(Motor::I().Control_PAD().Pressed_Right())
+    {
+        vel.x=50000.0f;
     }
-    m_body->SetLinearVelocity(vel);
+    vel.y=980.0f;
 
+
+    if(m_jumpTime==0 && Motor::I().Control_PAD().Just_Pressed_Cross())
+    {
+        m_jumpTime+=Motor::I().DeltaTime();
+    }
+
+
+    m_body->SetLinearVelocity(vel);*/
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

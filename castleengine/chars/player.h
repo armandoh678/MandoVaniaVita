@@ -11,7 +11,7 @@ public:
     virtual void onUpdate();
 
 protected:
-
+    float m_jumpTime;
 };
 
 #endif // PALYER_H
